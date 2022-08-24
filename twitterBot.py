@@ -20,7 +20,9 @@ class Twitter:
 
     def signIn(self):
         self.browser.get("https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoidHIifQ%3D%3D%22%7D")
-          
+        
+        frame_id = self.browser.find_element(by = By.ID, value = "searchModalIframe")
+        self.browser.switch_to.frame(frame_id)  
         
         self.browser.find_element(By.XPATH,"//*[@id='react-root']/div/div/div/main/div/div/div/div[2]/div[2]/div/div[5]/label/div/div[2]/div/input").send_keys(self.username)
       
